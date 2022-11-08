@@ -2,6 +2,7 @@ import React from 'react';
 import image1 from '../../../Others/Images/image1.jpg'
 import image2 from '../../../Others/Images/image2.jpg'
 import image3 from '../../../Others/Images/image3.jpg'
+import Services from '../../Services/Services';
 import BannerItems from './BannerItems';
 
 const Banner = () => {
@@ -26,11 +27,13 @@ const Banner = () => {
         }
     ]
     return (
-
+        <div> 
         <div className="carousel w-11/12 mx-auto my-5 bg-black rounded-md">
             {
                 sliderdata.map(banner =><BannerItems banner={banner} key={banner.id}></BannerItems>)
             }
+            
+        </div>
         </div>
 
     );

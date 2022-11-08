@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import icon from '../../../Others/Images/icon/icon.png'
 
 const Headers = () => {
     return (
 
-        <div className="navbar bg-base-100 bg-black text-white h-32">
+        <div className="navbar bg-slate-900 bg-base-100  text-white h-32">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -20,7 +21,7 @@ const Headers = () => {
 
                 </div>
                 
-                <a className="btn btn-ghost normal-case text-xl text-indigo-400"><img className='bg-white h-10 rounded-3xl'  src="https://o.remove.bg/downloads/8857582b-3309-41ed-90a5-4b2eb512e5f9/icon-removebg-preview.png" alt="" /> Jayed's Photography </a>
+                <a className="btn btn-ghost normal-case text-xl text-indigo-400"><img className='bg-white h-10 rounded-3xl'  src={icon} alt="" /> Jayed's Photography </a>
             </div>
             <div className="navbar-end lg:flex text-end hidden ">
                 <ul className="menu  menu-horizontal p-0 gap-5 font-extrabold text-lg text-indigo-400">
@@ -31,7 +32,6 @@ const Headers = () => {
                     <li><Link to='/signUp'>Sign Up</Link></li>
                 </ul>
             </div>
-            
         </div>
 
     );
