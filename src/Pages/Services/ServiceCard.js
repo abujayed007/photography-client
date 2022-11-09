@@ -1,28 +1,36 @@
 import React from 'react';
 import './ServiceCard.css'
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
     const { name, img, _id, details, ratings, price, level } = service;
     return (
 
-        <div className="card my-10 w-full lg:card-side bg-base-100 shadow-xl">
-            <img className=' lg:w-72 w-full h-52 rounded' src={img} alt="" />
-            <div className="mx-10">
-                <h2 className="card-title text-2xl font-bolder">{name}</h2>
-                {
-                    details.length > 100 ?
-                    <p>{details.slice(0, 100) + '...'} </p> :
+       <div className="">
+         <div className="card lg:w-1/2 md:w-full  mx-auto glass my-12">
+            <PhotoProvider>
+                <PhotoView src={img}>
+                    <figure><img className='w-full h-96' src={img} alt="car!" /></figure>
+                </PhotoView>
+            </PhotoProvider>
+            <div className='my-12'>
+                <h2 className='text-3xl font-bolder'>{name}</h2>
+                <h2 className='text-2xl font-bolder'>Level: {level}</h2>
+                <p><strong>Ratings: </strong> {ratings}</p>
+                {details.length > 100 ?
+                    <p>{details.slice(0, 100) + '...'}</p> :
                     <p>{details}</p>
                 }
-                
-                <p className='text-md font-bold'>Course Fees: {price}</p> 
-                <p className='text-md font-bold'>Ratings: {ratings}</p>
-                
-                <div className="card-actions justify-center my-8">
-                    <button className="btn btn-primary">Listen</button>
-                </div>
             </div>
+           
+                <Link className='mb-8' to={`/services/${_id}`}>
+                    <button className="btn btn-primary mt-10">See details</button>
+                </Link>
+            
         </div>
+       </div>
 
 
     );

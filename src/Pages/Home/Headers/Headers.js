@@ -1,8 +1,19 @@
-import React from 'react';
+import { error } from 'daisyui/src/colors';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import icon from '../../../Others/Images/icon/icon.png'
 
 const Headers = () => {
+    const {user, logOut} = useContext(AuthContext)
+
+    const handleLogOut =()=>{
+        logOut()
+        .then(()=>{
+
+        })
+        .catch(error => console.error(error))
+    }
     return (
 
         <div className="navbar bg-slate-900 bg-base-100  text-white h-32">
@@ -15,21 +26,49 @@ const Headers = () => {
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/blogs'>Blogs</Link></li>
                     <li><Link to='/services'>Services</Link></li>
-                    <li><Link to='/login'>Login</Link></li>
-                    <li><Link to='/signUp'>Sign Up</Link></li>
+                    <div>
+                        {
+                        
+                            user?.uid ? 
+                          <>
+                            <h3 className="text-md font-bold">{user?.name}</h3>
+                           <li><button>Log Out</button></li>
+                          </>
+                            :
+                            <>
+                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/signUp'>Sign Up</Link></li>
+                            </> 
+                    
+                        }
+                    </div>
                     </ul>
 
                 </div>
                 
-                <a className="btn btn-ghost normal-case text-xl text-indigo-400"><img className='bg-white h-10 rounded-3xl'  src={icon} alt="" /> Jayed's Photography </a>
+                <a className="btn btn-ghost normal-case text-xl text-indigo-400"><img className=' mx-2 bg-white h-10 rounded-3xl'  src={icon} alt="" />Jayed's<strong className='mx-2 text-orange-500'> Photography</strong> </a>
             </div>
             <div className="navbar-end lg:flex text-end hidden ">
                 <ul className="menu  menu-horizontal p-0 gap-5 font-extrabold text-lg text-indigo-400">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/blogs'>Blogs</Link></li>
                     <li><Link to='/services'>Services</Link></li>
-                    <li><Link to='/login'>Login</Link></li>
-                    <li><Link to='/signUp'>Sign Up</Link></li>
+                    <div className=' flex'>
+                        {
+                        
+                            user?.uid ? 
+                          <>
+                           <img className='h-10 mx-2 mt-2 rounded-full' src={user?.photoURL} alt="" />
+                            <button onClick={handleLogOut}>Log Out</button>
+                          </>
+                            :
+                            <>
+                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/signUp'>Sign Up</Link></li>
+                            </> 
+                    
+                        }
+                    </div>
                 </ul>
             </div>
         </div>

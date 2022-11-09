@@ -31,7 +31,7 @@ const Home = () => {
                  services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
             }
             <div >
-                <Link to='/services'><button>See All</button></Link>
+                <Link to='/services'><button className='btn bg-blue-500 my-10'>See All</button></Link>
             </div>
             </div>
         </div>
