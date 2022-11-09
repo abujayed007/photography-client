@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ServiceCard from '../../Services/ServiceCard';
 import Services from '../../Services/Services';
 import Banner from '../Banner/Banner';
 
 const Home = () => {
+
+    const [services, setServices] = useState([])
+    const [count, setCount] = useState(0);
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(3);
+
+
+    useEffect(() => {
+        const url = `http://localhost:5000/services?page=${page}&size=${size}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setServices(data.services)
+                setCount(data.count)
+            })
+    }, [page, size]);
+
+    const pages = Math.ceil(count / size);
     return (
         <div>
             <Banner></Banner>
-            <Services></Services>
+            <div>
+            {
+                 services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+            }
+            <div >
+                <Link to='/services'><button>See All</button></Link>
+            </div>
+            </div>
         </div>
     );
 };
