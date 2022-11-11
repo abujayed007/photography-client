@@ -4,7 +4,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const SetReviews = () => {
     const {user} = useContext(AuthContext)
-    const service = useLoaderData()
+    const service = useLoaderData([])
     const { name, img, _id, details, ratings, price, level } = service
     console.log(service);
 
@@ -24,7 +24,6 @@ const SetReviews = () => {
             email:email,
             serviceName:name,
             customer: name,
-            email,
             phone,
             comments
         }
@@ -57,7 +56,7 @@ const SetReviews = () => {
             <input name="email" type="text" placeholder="Your Email" defaultValue={user?.email}  readOnly
              className="input w-full h-24" />
             <input name="comments" type="text" placeholder="Your Comments" className="input w-full h-24" />
-           <input className='btn' type="submit" value="Review" />
+           <input className='btn' type="submit" value="Submit" />
         </form>
            </div>
     );

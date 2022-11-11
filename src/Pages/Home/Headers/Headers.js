@@ -31,6 +31,7 @@ const Headers = () => {
                         
                             user?.uid ? 
                           <>
+                          <li><Link to='/myreviews'>My Review</Link></li>
                             <h3 className="text-md font-bold">{user?.name}</h3>
                            <li><button>Log Out</button></li>
                           </>
@@ -58,6 +59,7 @@ const Headers = () => {
                         
                             user?.uid ? 
                           <>
+                          <li><Link to='/myreviews'>My Reviews</Link></li>
                            <img className='h-10 mx-2 mt-2 rounded-full' src={user?.photoURL} alt="" />
                             <button onClick={handleLogOut}>Log Out</button>
                           </>

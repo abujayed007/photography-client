@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReviewsCard = ({ review }) => {
+const ReviewCard = ({review}) => {
     const { photo, name, serviceName, comments , email} = review;
     return (
 
@@ -15,4 +15,4 @@ const ReviewsCard = ({ review }) => {
     );
 };
 
-export default ReviewsCard;
+export default ReviewCard;

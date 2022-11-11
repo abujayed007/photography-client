@@ -7,10 +7,10 @@ const ClientReviews = () => {
    const {user} = useContext(AuthContext)
 
    useEffect(() => {
-    fetch(`http://localhost:5001/review`)
+    fetch(`http://localhost:5001/review?email=${user?.email}`)
         .then(res => res.json())
         .then(data => SetReviews(data))
-}, [])
+}, [user?.email])
 
     return (
         <div className=''>

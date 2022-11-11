@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import ServiceReview from '../ServiceReview/ServiceReview';
 import ClientReviews from '../SetReviews/ClientReviews';
 import SetReviews from '../SetReviews/SetReviews';
 
@@ -29,24 +30,14 @@ const ServiceDetails = () => {
                 <p className='my-2'>{details}</p>
             </div>
             <div>
-            {
-                user?.email ?
-                  <>
-                    <div>
-                        <ClientReviews></ClientReviews>
-                    </div>
+           
                     <div>
                     <SetReviews></SetReviews>
                     </div>
-                  </>
-                     :
-                    <>
-                     <div>
-                        <ClientReviews></ClientReviews>
+                    <div>
+                    <ServiceReview></ServiceReview>
                     </div>
-                    </>
-                    
-            }
+                 
             </div>
 
         </div>

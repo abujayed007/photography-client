@@ -1,12 +1,15 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+
 
 
 const Login = () => {
     const { logIn, googleLogin } = useContext(AuthContext);
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
         event.preventDefault();
@@ -17,6 +20,8 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 const user = result.user;
+                navigate(from, {replace: true})
+                form.reset()
                 console.log(user);
             })
             .catch(error => console.log(error));
@@ -28,6 +33,7 @@ const Login = () => {
         googleLogin(googleProvider)
             .then(result => {
                 const user = result.user;
+                navigate(from, {replace: true})
                 console.log(user);
             })
             .catch(error => console.log(error));
@@ -60,6 +66,7 @@ const Login = () => {
                     </form>
                     <p className='text-center'>New to Jayed's Photography? <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
                     <button onClick={handleGoogleLogin} className='w-2/3 mt-6 mx-auto btn bg-blue-600'> Google Login</button>
+
                 </div>
             </div>
         </div>
