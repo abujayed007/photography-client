@@ -23,7 +23,9 @@ const handleDeleteReview = id =>{
       .then(data => {
           console.log(data);
         if(data.deletedCount > 0){
-            toast("Deleted Success");
+            toast("Deleted Success",{
+                position:'top-center'
+            });
             const remaining = reviews.filter(review => review._id !== id)
             SetReviews(remaining)
         }
