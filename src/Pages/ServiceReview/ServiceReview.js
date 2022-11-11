@@ -4,7 +4,7 @@ import useTitle from '../../hooks/useTitle';
 import ReviewCard from './ReviewCard';
 
 const ServiceReview = ({id}) => {
-    useTitle('My Reviews Reviews')
+    useTitle('My Reviews')
 console.log(id);
     const [serviceReview, setServiceReview] = useState([])
     const {user} = useContext(AuthContext)
