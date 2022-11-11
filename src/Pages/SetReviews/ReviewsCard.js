@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const ReviewsCard = ({ review, handleDeleteReview }) => {
@@ -14,7 +15,7 @@ const ReviewsCard = ({ review, handleDeleteReview }) => {
         <button onClick={()=> handleDeleteReview(_id)} className='btn'>X</button>
         </label>
         <label>
-        <button className='btn'>Update</button>
+        <Link to='/update'><button className='btn'>Update</button></Link>
         </label>
       </div>
       <img className='rounded-full mt-2 h-8 mx-auto' src={photo} alt="" />
