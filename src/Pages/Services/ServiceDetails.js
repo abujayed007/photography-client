@@ -35,7 +35,8 @@ const ServiceDetails = () => {
                     <SetReviews></SetReviews>
                     </div>
                     <div>
-                    <ServiceReview></ServiceReview>
+                    <ServiceReview id={_id}></ServiceReview>
+
                     </div>
                  
             </div>
