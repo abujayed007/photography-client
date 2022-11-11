@@ -23,7 +23,7 @@ const router = createBrowserRouter([
                 path:'/services',
                 element:<Services></Services>,
                 loader: () =>{
-                    return fetch ('http://localhost:5001/services')
+                    return fetch ('https://photography-server-phi.vercel.app/services')
                 }
             },
             {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             {
                 path:'/services/:id',
                 element:<PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
-                loader: ({params})=> fetch(`http://localhost:5001/services/${params.id}`)
+                loader: ({params})=> fetch(`https://photography-server-phi.vercel.app/services/${params.id}`)
                 
             },
             {

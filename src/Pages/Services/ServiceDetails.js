@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import ServiceReview from '../ServiceReview/ServiceReview';
 import ClientReviews from '../SetReviews/ClientReviews';
 import SetReviews from '../SetReviews/SetReviews';
@@ -11,7 +12,7 @@ const ServiceDetails = () => {
     const service = useLoaderData()
     const { name, img, _id, details, ratings, price, level } = service
     console.log(service);
-
+    useTitle('Service Details')
 
     return (
         <div>

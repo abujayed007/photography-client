@@ -9,11 +9,11 @@ console.log(id);
 
    
         useEffect(()=>{
-            fetch(`http://localhost:5001/review?serviceId=${id}`)
+            fetch(`https://photography-server-phi.vercel.app/review?serviceId=${id}`)
         .then(res=> res.json())
         .then(data =>{
             setServiceReview(data)})
-        },[user?.email]);
+        },[id]);
 
        
    

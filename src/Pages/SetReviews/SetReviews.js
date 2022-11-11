@@ -29,7 +29,7 @@ const SetReviews = () => {
         }
         console.log(reviews);
 
-        fetch(`http://localhost:5001/review`, {
+        fetch(`https://photography-server-phi.vercel.app/review`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

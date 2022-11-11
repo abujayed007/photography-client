@@ -2,15 +2,16 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
+
 const SignUp = () => {
     const {createUser} = useContext(AuthContext)
-
+ useTitle('Sign Up')
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-
         createUser(email, password)
         .then(result =>{
             const user = result.user;

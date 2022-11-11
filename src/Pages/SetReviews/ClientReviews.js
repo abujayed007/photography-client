@@ -1,3 +1,5 @@
+
+
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import ReviewsCard from './ReviewsCard';
@@ -9,14 +11,14 @@ const ClientReviews = () => {
    const {user} = useContext(AuthContext)
 
    useEffect(() => {
-    fetch(`http://localhost:5001/review?email=${user?.email}`)
+    fetch(`https://photography-server-phi.vercel.app/review?email=${user?.email}`)
         .then(res => res.json())
         .then(data => SetReviews(data))
 }, [user?.email])
 const handleDeleteReview = id =>{
     const procced = window.confirm('Are You Sure Delete This Review')
     if (procced){
-      fetch(`http://localhost:5001/review/${id}`,{
+      fetch(`https://photography-server-phi.vercel.app/review/${id}`,{
         method : 'DELETE'
       })
       .then(res => res.json())
