@@ -1,11 +1,20 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import Loading from '../Loading/Loading';
 
 const Blogs = () => {
+    const {loading} = useContext(AuthContext)
     useTitle('Blogs')
+
+    if(loading){
+     return <Loading></Loading>
+    }
+
     return (
-        <div>
-            <div className="mx-28 shadow-lg text-white ">
+        <div className='p-10 text-left'>
+            <div className="shadow-lg text-white ">
                 <h2 className="text-2xl font-semibold">Difference Between SQL and NoSQL?</h2>
                 <h4 className="text-md">
                     <strong>SQL: <br /></strong>

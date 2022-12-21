@@ -1,14 +1,15 @@
-
-
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import ReviewsCard from './ReviewsCard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../hooks/useTitle';
 
 const ClientReviews = () => {
    const [reviews, SetReviews] = useState([])
    const {user} = useContext(AuthContext)
+
+   useTitle('My Reviews')
 
    useEffect(() => {
     fetch(`https://photography-server-phi.vercel.app/review?email=${user?.email}`)

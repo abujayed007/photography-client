@@ -4,7 +4,6 @@ import Blogs from "../Pages/Blogs/Blogs";
 import Error from "../Pages/Error/Error";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
-
 import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
 import ClientReviews from "../Pages/SetReviews/ClientReviews";
@@ -50,7 +49,8 @@ const router = createBrowserRouter([
                 
                 path:'/blogs',
                 element:<Blogs></Blogs>
-            }
+            },
+           
         ],
     
         

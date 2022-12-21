@@ -1,13 +1,16 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 
 
+
 const Login = () => {
-    const { logIn, googleLogin } = useContext(AuthContext);
+    const [error, setError] = useState(null)
+    const { logIn, googleLogin , } = useContext(AuthContext);
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/'
@@ -27,6 +30,12 @@ const Login = () => {
                 console.log(user);
             })
             .catch(error => console.log(error));
+
+            if(password.length < 6 ){
+                setError('Password should be 6 charectar')
+                return
+            }
+            
     }
 
     const googleProvider = new GoogleAuthProvider()
@@ -41,6 +50,7 @@ const Login = () => {
             .catch(error => console.log(error));
     }
 
+   
     return (
         <div className=" w-1/2 mx-auto my-20">
             <div className="hero-content">
@@ -51,13 +61,14 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                            <input required type="email" name='email' placeholder="Email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                            <input required type="password" name='password' placeholder="password" className="input input-bordered" />
+                            <p class="text-red-500 text-left">{error}</p>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
